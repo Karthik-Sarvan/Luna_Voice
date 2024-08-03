@@ -1,26 +1,28 @@
 # Luna-Voice
 
-Luna-Voice is an advanced AI-based voice assistant that can understand commands in any language and provide responses in English.
-It also includes functionality for playing songs.
+Welcome to **Luna-Voice**, an advanced AI-powered voice assistant that operates directly in your browser. This web-based application can understand commands in any language and respond in English, and it also features the ability to play songs.
 
 ## Features
 
-- **Multilingual Understanding**: Comprehend and translate commands from various languages to English.
-- **Song Playback**: Request and play songs Ads Free.
-- **AI Integration**: Utilizes sophisticated AI technologies for accurate and responsive interactions.
-- 
+- **Multilingual Understanding**: Interprets and translates commands from various languages into English.
+- **Ad-Free Song Playback**: Play songs directly from your browser without interruptions.
+- **AI Integration**: Utilizes advanced AI technologies for precise and responsive interactions.
+
 ## Installation
 
-To set up Luna-Voice on your local machine, follow these steps:
+To run Luna-Voice locally in your browser, follow these steps:
 
 1. **Clone the Repository**
    ```bash
    git clone https://github.com/Karthik-Sarvan/Luna_Voice.git
-    ``` 
+2. **Navigate to the Project Directory**
+   ```bash
+   cd Luna_Voice
+3. **Open the Project in Your Browser**
+    - Open index.html in your preferred web browser.
 
-## Contributing
+## Usage
 
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
+- **Start the Application**: Launch index.html in your browser to start Luna-Voice.
+- **Voice Commands**: Use your microphone to issue commands in any language. responses will be in English.
+- **Play Songs**: Request songs, and Luna-Voice will handle playback directly in the browser.
