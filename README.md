@@ -17,9 +17,9 @@ To set up Luna-Voice on your local machine, follow these steps:
    ```bash
    git clone https://github.com/Karthik-Sarvan/Luna_Voice.git
     ```
-2. **Run the index.html in your browser**
-   ![image](https://github.com/user-attachments/assets/c4b53ff9-0d7c-45a4-9804-bb78bdcbc5e4)
+2. **Run the index.html in your browser**   
    ![image](https://github.com/user-attachments/assets/befdde01-cff4-41fd-9d3d-32f7a4ce58a7)
+   ![image](https://github.com/user-attachments/assets/c4b53ff9-0d7c-45a4-9804-bb78bdcbc5e4)
 
 
     
