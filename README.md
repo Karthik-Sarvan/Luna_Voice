@@ -1,6 +1,7 @@
 # Luna-Voice
 
-Luna-Voice is an advanced AI-based voice assistant that can understand commands in any language and provide responses in English. It also includes functionality for playing songs.
+Luna-Voice is an advanced AI-based voice assistant that can understand commands in any language and provide responses in English.
+It also includes functionality for playing songs.
 
 ## Features
 
@@ -14,4 +15,15 @@ To set up Luna-Voice on your local machine, follow these steps:
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/yourusername/Luna-Voice.git
+   git clone https://github.com/Karthik-Sarvan/Luna_Voice.git
+    ```
+2. **Run the index.html in your browser**
+
+    
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
