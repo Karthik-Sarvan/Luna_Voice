@@ -11,7 +11,7 @@ Welcome to **Luna-Voice**, an advanced AI-powered voice assistant that operates 
 
 # Demo
 
-- **Luna Voice**: `https://karthik-sarvan.github.io/Luna_Voice/`
+- **Luna Voice**: [https://karthik-sarvan.github.io/Luna_Voice/](https://karthik-sarvan.github.io/Luna_Voice/)
 
 ## Installation
 
