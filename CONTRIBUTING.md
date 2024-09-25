@@ -45,7 +45,8 @@ If your changes require updates to documentation, please ensure that you make th
     Write clear and concise comments.
     Ensure your code is well-structured and readable.
 
-Thank you for helping us improve [LUNA]! We look forward to your contributions.
+# Thank you 
+  Thank you  for helping us improve LUNA! We look forward to your contributions.
 
 
   
