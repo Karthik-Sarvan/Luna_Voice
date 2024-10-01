@@ -81,6 +81,10 @@ If your changes require updates to documentation, please ensure that you make th
 
 # contributors
 
+<a href="https://github.com/Karthik-Sarvan/Luna_Voice/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Karthik-Sarvan/Luna_Voice" />
+</a>
+
 
 # Thank you 
   Thank you  for helping us improve LUNA! We look forward to your contributions.
