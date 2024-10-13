@@ -1,14 +1,16 @@
 let mediaRecorder;
 let audioChunks = [];
+let audioQueryResponse;
+let speechSynthesisUtterance;
 
 
 function speakText(text) {
     var voices = speechSynthesis.getVoices();
-    var msg = new SpeechSynthesisUtterance(text);
-    msg.default = false;
-    msg.localservice = true;
-    msg.lang = "en-GB";
-    speechSynthesis.speak(msg);
+    speechSynthesisUtterance = new SpeechSynthesisUtterance(text);
+    speechSynthesisUtterance.default = false;
+    speechSynthesisUtterance.localservice = true;
+    speechSynthesisUtterance.lang = "en-GB";
+    speechSynthesis.speak(speechSynthesisUtterance);
 }
 
 async function startRecording() {
@@ -136,19 +138,28 @@ async function uploadAudio(formData) {
         const result = await response.json();
         const responseText = result.response;
         // speakText(responseText);
-        const keywords = ["song", "Song", "Playing", "playing"];
+        const keywords = ["song", "Song", "Playing", "playing", "sung by", "Sung By", "Namaskaram."];
         // Display the response
         const messageElement = document.createElement('p');
         messageElement.className = 'user';
-        messageElement.innerText = responseText;
-        document.querySelector('.messages').innerText = responseText;
+        document.querySelector('.messages').appendChild(messageElement);
+        //messageElement.innerText = responseText;
+        //document.querySelector('.messages').innerText = responseText;
+        audioQueryResponse = responseText;
 
         // Speak out the response
         speakText(responseText);
+        // Type the response along with the audio
+        speechSynthesisUtterance.onstart = () => {
+            typeWriteResponseText();
+        }
         if (containsKeywords(responseText, keywords)) {
             console.log(responseText);
             const cleanedResponseText = removeKeywords(responseText, keywords);
-            containsSongAndCallAPI(cleanedResponseText);
+            // Play the song only after the audio response is spoken out completely
+            speechSynthesisUtterance.onend = () => {
+                containsSongAndCallAPI(cleanedResponseText);
+            }
         }
     } catch (error) {
         const errorElement = document.createElement('p');
@@ -161,3 +172,12 @@ async function uploadAudio(formData) {
     }
 }
 
+let index = 0;
+function typeWriteResponseText() {
+  if (index < audioQueryResponse.length) {
+    document.querySelector('.messages').innerHTML +=
+      audioQueryResponse.charAt(index);
+    index++;
+  }
+  setTimeout(typeWriteResponseText, 120);
+}
