@@ -8,13 +8,16 @@
     <!-- Bootstrap + Meyawo main styles -->
 	<link rel="icon" type="image/jpg" href="./favicon.jpg">
 	<link rel="stylesheet" href="style.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
 </head>
 <body>
     <div class="chat-container header" id="home">
         <section class="messages response" id="response">
-            <h1 class="header-title AI-title">
+            <h1 class="header-title AI-title" data-aos="zoom-in">
                 <span class="up">This is Luna! <br> </span>
-                <p  id="response"></p>
+                <p  id="response" data-aos="fade-up"
+                data-aos-anchor-placement="center-bottom"></p>
             </h1>
         </section>
         <div class="input-container container-ai" id="questionForm" >
@@ -147,5 +150,9 @@
     </style>
 
     <script src="script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
 </body>
 </html>
