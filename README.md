@@ -81,9 +81,7 @@ If your changes require updates to documentation, please ensure that you make th
 
 # contributors
 
-<a href="https://github.com/Karthik-Sarvan/Luna_Voice/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Karthik-Sarvan/Luna_Voice" />
-</a>
+[<img src="https://github.com/{{ contributor }}.png" width="60px;"/><br /><sub><ahref="https://github.com/{{ contributor }}">{{ contributor }}</a></sub>](https://github.com/{{ contributor }}/{{ repository }}
 
 
 # Thank you 
