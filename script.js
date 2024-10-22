@@ -16,9 +16,12 @@ function speakText(text) {
 async function startRecording() {
     // audioElement.play();
     stopSong();
+    init();
     document.querySelector(".start").style.display = 'none'
     document.querySelector(".stop").style.display = 'flex';
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const mediaDeviceStream = navigator.mediaDevices.getUserMedia({ audio: true });
+    mediaDeviceStream.then(connectStream);
+    const stream = await mediaDeviceStream;
     mediaRecorder = new MediaRecorder(stream);
 
     mediaRecorder.ondataavailable = event => {
@@ -42,12 +45,13 @@ async function startRecording() {
     recordButton.classList.add('active');
     stopButton.disabled = false;
 
-
 }
 
 function stopRecording() {
     document.querySelector(".start").style.display = 'flex'
     document.querySelector(".stop").style.display = 'none';
+    document.querySelector(".audio-visualizer").style.display = 'none';
+    document.querySelector(".chat-container").removeChild(document.querySelector(".audio-visualizer"));
     mediaRecorder.stop();
 
     const recordButton = document.querySelector('.record-button');
@@ -181,3 +185,62 @@ function typeWriteResponseText() {
   }
   setTimeout(typeWriteResponseText, 120);
 }
+
+function connectStream(stream) {
+    const audioContext = new AudioContext();
+    const analyser = audioContext.createAnalyser();
+    const source = audioContext.createMediaStreamSource( stream );
+    source.connect( analyser );
+    analyser.smoothingTimeConstant = 0.5;
+    analyser.fftSize = 32;
+
+    this.initRenderLoop( analyser );
+}
+
+function initRenderLoop(analyser) {
+    const frequencyData = new Uint8Array( analyser.frequencyBinCount );
+    const dataMap = { 0: 15, 1: 10, 2: 8, 3: 9, 4: 6, 5: 5, 6: 2, 7: 1, 8: 0, 9: 4, 10: 3, 11: 7, 12: 11, 13: 12, 14: 13, 15: 14 };
+    const processFrame = ( data ) => {
+      const values = Object.values( data );
+      let i;
+      for ( i = 0; i < visualValueCount; ++i ) {
+        const value = values[ dataMap[ i ] ] / 255;
+        const elmStyles = visualElements[ i ].style;
+        elmStyles.transform = `scaleY( ${ value } )`;
+        elmStyles.opacity = Math.max( .85, value );
+      }
+    };
+
+    const renderFrame = () => {
+      analyser.getByteFrequencyData( frequencyData );
+      processFrame( frequencyData );
+
+      requestAnimationFrame( renderFrame );
+    };
+    requestAnimationFrame( renderFrame );
+}
+
+  const visualMainElement = document.createElement('div');
+  visualMainElement.className = 'audio-visualizer';
+  const inputContainerElement = document.querySelector('.input-container');
+  inputContainerElement.before(visualMainElement);
+  const visualValueCount = 16;
+  let visualElements;
+  const createDOMElements = () => {
+    let i;
+    for ( i = 0; i < visualValueCount; ++i ) {
+      const elm = document.createElement( 'div' );
+      visualMainElement.appendChild( elm );
+    }
+    visualElements = document.querySelectorAll( '.audio-visualizer div' );
+  };
+  createDOMElements();
+
+function init() {
+    // Creating initial DOM elements
+    const initDOM = () => {
+      visualMainElement.innerHTML = '';
+      createDOMElements();
+    };
+    initDOM();
+};
